@@ -38,16 +38,18 @@ public class testSteps {
 
     @Then("^I login using credentials$")
     public void i_login_using_credentials() throws Throwable {
-        String username = System.getenv("BROWSERSTACK_USERNAME");
-        String password = System.getenv("BROWSERSTACK_PASSWORD");
+//        String username = System.getenv("BROWSERSTACK_USERNAME");
+//        String password = System.getenv("BROWSERSTACK_PASSWORD");
+        String username = System.getProperty("BROWSERSTACK_USERNAME");
+        String password = System.getProperty("BROWSERSTACK_PASSWORD");
         System.out.println("User Name Value:- " + username);
         System.out.println("User Name Value:- " + password);
         driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         Thread.sleep(2000);
-        driver.findElement(By.xpath("//*[@id='root']/div/div/div[2]/form/input[1]")).sendKeys("debarnab");
-        driver.findElement(By.cssSelector(".content > form:nth-child(1) > input:nth-child(2)")).sendKeys(System.getenv("BROWSERSTACK_USERNAME"));
-        driver.findElement(By.cssSelector(".content > form:nth-child(1) > input:nth-child(3)")).sendKeys(System.getenv("BROWSERSTACK_PASSWORD"));
+        driver.findElement(By.xpath("//*[@id='root']/div/div/div[2]/form/input[1]")).sendKeys("debarnabb");
+        driver.findElement(By.cssSelector(".content > form:nth-child(1) > input:nth-child(2)")).sendKeys(username);
+        driver.findElement(By.cssSelector(".content > form:nth-child(1) > input:nth-child(3)")).sendKeys(password);
 //
        driver.findElement(By.cssSelector(".login-button")).click();
 
